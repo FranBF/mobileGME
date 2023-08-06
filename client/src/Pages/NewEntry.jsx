@@ -25,7 +25,7 @@ export function NewEntry () {
     const personManager = mng
     const team = tm
     try {
-      await axios.post(`${process.env.PROD}/api/entry`, { device, personGiven, deliverDate, status, personManager, team }, {
+      await axios.post('https://api-mobilestock.onrender.com/api/entry', { device, personGiven, deliverDate, status, personManager, team }, {
         headers: {
           Authorization: 'Bearer access_token'
         },
