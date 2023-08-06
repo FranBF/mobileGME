@@ -13,9 +13,6 @@ export function Home () {
   const { displayEntries } = useSelector((state) => state.entry)
   const handleEntries = async () => {
     await axios.get('https://api-mobilestock.onrender.com/api/entry', {
-      headers: {
-        Authorization: 'Bearer access_token'
-      },
       withCredentials: true
     }).then((r) => { dispatch(fetchEntries(r.data)) })
   }
@@ -23,9 +20,6 @@ export function Home () {
   const handleDevices = async () => {
     try {
       await axios.get('https://api-mobilestock.onrender.com/api/device', {
-        headers: {
-          Authorization: 'Bearer access-token'
-        },
         withCredentials: true
       }).then((r) => { dispatch(fetchDevices(r.data)) })
     } catch (error) {
@@ -36,9 +30,6 @@ export function Home () {
   const handleManagers = async () => {
     try {
       await axios.get('https://api-mobilestock.onrender.com/api/manager', {
-        headers: {
-          Authorization: 'Bearer access_token'
-        },
         withCredentials: true
       }).then((d) => { dispatch(fetchManagers(d.data)) })
     } catch (error) {
@@ -49,9 +40,6 @@ export function Home () {
   const handleTeams = async () => {
     try {
       await axios.get('https://api-mobilestock.onrender.com/api/team', {
-        headers: {
-          Authorization: 'Bearer access_token'
-        },
         withCredentials: true
       }).then((r) => dispatch(fetchTeams(r.data)))
     } catch (error) {
