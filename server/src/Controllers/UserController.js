@@ -21,6 +21,7 @@ export const login = async (req, res, next) => {
     if (!isCorrect) return console.log('Las credenciales no son correctas')
     const token = jwt.sign({ id: user._id }, process.env.JWT)
     const { password, ...other } = user._doc
+    console.log('User token: ' + token)
     res.cookie('access_token', token, {
       httpOnly: true
     }).status(200).json(other)
