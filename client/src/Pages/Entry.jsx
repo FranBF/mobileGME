@@ -23,7 +23,7 @@ export function Entry () {
     const personManager = formData.get('manager')
     const team = formData.get('department')
     try {
-      await axios.put(`${process.env.PROD}/api/entry/${entry._id}`, { device, personGiven, deliverDate, status, personManager, team }, {
+      await axios.put(`https://api-mobilestock.onrender.com/api/entry/${entry._id}`, { device, personGiven, deliverDate, status, personManager, team }, {
         headers: {
           Authorization: 'Bearer access_token'
         },

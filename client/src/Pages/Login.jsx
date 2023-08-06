@@ -14,13 +14,12 @@ export function Login () {
   const [password, setPassword] = useState('')
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const PROD = 'http://localhost:9899'
 
   const handleLogin = async (e) => {
     e.preventDefault()
     console.log(username + ' ' + password)
     try {
-      const res = await axios.post(`${process.env.PROD}/api/user/login`, { username, password }, {
+      const res = await axios.post('https://api-mobilestock.onrender.com/api/user/login', { username, password }, {
         headers: {
           Authorization: 'Bearer access_token'
         },

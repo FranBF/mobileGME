@@ -10,7 +10,7 @@ export function Devices () {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${process.env.PROD}/api/device/${id}`, {
+      await axios.delete(`https://api-mobilestock.onrender.com/api/device/${id}`, {
         headers: {
           Authorization: 'Bearer access_token'
         },

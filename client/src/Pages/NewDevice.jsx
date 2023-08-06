@@ -13,7 +13,7 @@ export function NewDevice () {
     const price = formData.get('price')
 
     try {
-      await axios.post(`${process.env.PROD}/api/device`, { name, price }, {
+      await axios.post('https://api-mobilestock.onrender.com/api/device', { name, price }, {
         headers: {
           Authorization: 'Bearer access_token'
         },
