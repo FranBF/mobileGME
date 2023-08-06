@@ -12,7 +12,7 @@ export function Home () {
   const dispatch = useDispatch()
   const { displayEntries } = useSelector((state) => state.entry)
   const handleEntries = async () => {
-    await axios.get('http://localhost:9899/api/entry', {
+    await axios.get(`${process.env.PROD}/api/entry`, {
       headers: {
         Authorization: 'Bearer access_token'
       },
@@ -22,7 +22,7 @@ export function Home () {
 
   const handleDevices = async () => {
     try {
-      await axios.get('http://localhost:9899/api/device', {
+      await axios.get(`${process.env.PROD}/api/device`, {
         headers: {
           Authorization: 'Bearer access-token'
         },
@@ -35,7 +35,7 @@ export function Home () {
 
   const handleManagers = async () => {
     try {
-      await axios.get('http://localhost:9899/api/manager', {
+      await axios.get(`${process.env.PROD}/api/manager`, {
         headers: {
           Authorization: 'Bearer access_token'
         },
@@ -48,7 +48,7 @@ export function Home () {
 
   const handleTeams = async () => {
     try {
-      await axios.get('http://localhost:9899/api/team', {
+      await axios.get(`${process.env.PROD}/api/team`, {
         headers: {
           Authorization: 'Bearer access_token'
         },
@@ -61,7 +61,7 @@ export function Home () {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:9899/api/entry/${id}`, {
+      await axios.delete(`${process.env.PROD}/api/entry/${id}`, {
         headers: {
           Authorization: 'Bearer access_token'
         },

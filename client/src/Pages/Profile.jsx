@@ -23,7 +23,7 @@ export function Profile () {
     e.preventDefault()
     try {
       console.log('llego')
-      await axios.put(`${PROD}/api/user/${user._id}`, { password }, {
+      await axios.put(`${process.env.PROD}/api/user/${user._id}`, { password }, {
         headers: {
           Authorization: 'Bearer access_token'
         },
