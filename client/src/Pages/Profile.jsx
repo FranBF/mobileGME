@@ -10,7 +10,7 @@ export function Profile () {
   const [password, setPwd] = useState('')
   const navigate = useNavigate()
   const DEV = 'http://localhost:9899'
-  const PROD = process.env.PROD
+  const URL_PROD = process.env.URL_PROD
   const dispatch = useDispatch()
 
   const handlePwd = (e) => {
@@ -24,7 +24,7 @@ export function Profile () {
     e.preventDefault()
     try {
       console.log('llego')
-      await axios.put(`${PROD}/api/user/${user._id}`, { password }, {
+      await axios.put(`${URL_PROD}/api/user/${user._id}`, { password }, {
         headers: {
           Authorization: 'Bearer access_token'
         },

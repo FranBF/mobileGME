@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 export function NewDevice () {
   const navigate = useNavigate()
-  const PROD = process.env.PROD
+  const URL_PROD = process.env.URL_PROD
 
   const handleForm = async (e) => {
     e.preventDefault()
@@ -14,7 +14,7 @@ export function NewDevice () {
     const price = formData.get('price')
 
     try {
-      await axios.post(`${PROD}/api/device`, { name, price }, {
+      await axios.post(`${URL_PROD}/api/device`, { name, price }, {
         headers: {
           Authorization: 'Bearer access_token'
         },

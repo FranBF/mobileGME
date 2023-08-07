@@ -7,11 +7,11 @@ import { Link } from 'react-router-dom'
 export function Devices () {
   const { displayDevices } = useSelector((state) => state.device)
   const dispatch = useDispatch()
-  const PROD = process.env.PROD
+  const URL_PROD = process.env.URL_PROD
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${PROD}/api/device/${id}`, {
+      await axios.delete(`${URL_PROD}/api/device/${id}`, {
         headers: {
           Authorization: 'Bearer access_token'
         },

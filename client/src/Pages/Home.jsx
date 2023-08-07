@@ -13,16 +13,16 @@ export function Home () {
   const { displayEntries } = useSelector((state) => state.entry)
   const { currentUser } = useSelector((state) => state.user)
   const navigate = useNavigate()
-  const PROD = process.env.PROD
+  const URL_PROD = process.env.URL_PROD
   const handleEntries = async () => {
-    await axios.get(`${PROD}/api/entry`, {
+    await axios.get(`${URL_PROD}/api/entry`, {
       withCredentials: true
     }).then((r) => { dispatch(fetchEntries(r.data)) })
   }
 
   const handleDevices = async () => {
     try {
-      await axios.get(`${PROD}/api/device`, {
+      await axios.get(`${URL_PROD}/api/device`, {
         withCredentials: true
       }).then((r) => { dispatch(fetchDevices(r.data)) })
     } catch (error) {
@@ -32,7 +32,7 @@ export function Home () {
 
   const handleManagers = async () => {
     try {
-      await axios.get(`${PROD}/api/manager`, {
+      await axios.get(`${URL_PROD}/api/manager`, {
         withCredentials: true
       }).then((d) => { dispatch(fetchManagers(d.data)) })
     } catch (error) {
@@ -42,7 +42,7 @@ export function Home () {
 
   const handleTeams = async () => {
     try {
-      await axios.get(`${PROD}/api/team`, {
+      await axios.get(`${URL_PROD}/api/team`, {
         withCredentials: true
       }).then((r) => dispatch(fetchTeams(r.data)))
     } catch (error) {
@@ -52,7 +52,7 @@ export function Home () {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${PROD}/api/entry/${id}`, {
+      await axios.delete(`${URL_PROD}/api/entry/${id}`, {
         headers: {
           Authorization: 'Bearer access_token'
         },

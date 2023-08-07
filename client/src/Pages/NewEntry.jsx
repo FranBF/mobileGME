@@ -12,7 +12,7 @@ export function NewEntry () {
   const [stats, setStats] = useState('')
   const { displayDevices } = useSelector((state) => state.device)
   const { displayTeams } = useSelector((state) => state.team)
-  const PROD = process.env.PROD
+  const URL_PROD = process.env.URL_PROD
   const { displayManagers } = useSelector((state) => state.manager)
 
   const handleForm = async (e) => {
@@ -26,7 +26,7 @@ export function NewEntry () {
     const personManager = mng
     const team = tm
     try {
-      await axios.post(`${PROD}/api/entry`, { device, personGiven, deliverDate, status, personManager, team }, {
+      await axios.post(`${URL_PROD}/api/entry`, { device, personGiven, deliverDate, status, personManager, team }, {
         headers: {
           Authorization: 'Bearer access_token'
         },
