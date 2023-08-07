@@ -22,7 +22,7 @@ export function NewDevice () {
           Authorization: 'Bearer access_token'
         },
         withCredentials: true
-      }).then((r) => dispatch(addDevice(r.data)))
+      }).then((r) => dispatch(addDevice(r.data))).catch((err) => console.log(err))
       navigate('/devices')
     } catch (error) {
       console.log(error)
