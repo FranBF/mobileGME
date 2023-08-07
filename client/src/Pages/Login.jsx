@@ -20,7 +20,7 @@ export function Login () {
     e.preventDefault()
     console.log(username + ' ' + password)
     try {
-      const res = await axios.post(`${URL_PROD}/api/user/login`, { username, password }, {
+      const res = await axios.post('https://api-mobilestock.onrender.com/api/user/login', { username, password }, {
         headers: {
           Authorization: 'Bearer access_token'
         },

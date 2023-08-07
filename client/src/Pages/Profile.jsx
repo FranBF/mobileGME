@@ -24,7 +24,7 @@ export function Profile () {
     e.preventDefault()
     try {
       console.log('llego')
-      await axios.put(`${URL_PROD}/api/user/${user._id}`, { password }, {
+      await axios.put(`https://api-mobilestock.onrender.com/api/user/${user._id}`, { password }, {
         headers: {
           Authorization: 'Bearer access_token'
         },

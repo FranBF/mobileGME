@@ -15,14 +15,14 @@ export function Home () {
   const navigate = useNavigate()
   const URL_PROD = process.env.URL_PROD
   const handleEntries = async () => {
-    await axios.get(`${URL_PROD}/api/entry`, {
+    await axios.get('https://api-mobilestock.onrender.com/api/entry', {
       withCredentials: true
     }).then((r) => { dispatch(fetchEntries(r.data)) })
   }
 
   const handleDevices = async () => {
     try {
-      await axios.get(`${URL_PROD}/api/device`, {
+      await axios.get('https://api-mobilestock.onrender.com/api/device', {
         withCredentials: true
       }).then((r) => { dispatch(fetchDevices(r.data)) })
     } catch (error) {
@@ -32,7 +32,7 @@ export function Home () {
 
   const handleManagers = async () => {
     try {
-      await axios.get(`${URL_PROD}/api/manager`, {
+      await axios.get('https://api-mobilestock.onrender.com/api/manager', {
         withCredentials: true
       }).then((d) => { dispatch(fetchManagers(d.data)) })
     } catch (error) {
@@ -42,7 +42,7 @@ export function Home () {
 
   const handleTeams = async () => {
     try {
-      await axios.get(`${URL_PROD}/api/team`, {
+      await axios.get('https://api-mobilestock.onrender.com/api/team', {
         withCredentials: true
       }).then((r) => dispatch(fetchTeams(r.data)))
     } catch (error) {
@@ -52,7 +52,7 @@ export function Home () {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${URL_PROD}/api/entry/${id}`, {
+      await axios.delete(`https://api-mobilestock.onrender.com/api/entry/${id}`, {
         headers: {
           Authorization: 'Bearer access_token'
         },
