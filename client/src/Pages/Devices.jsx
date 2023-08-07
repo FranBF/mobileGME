@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom'
 export function Devices () {
   const { displayDevices } = useSelector((state) => state.device)
   const dispatch = useDispatch()
-  const URL_PROD = process.env.URL_PROD
 
   const handleDelete = async (id) => {
     try {

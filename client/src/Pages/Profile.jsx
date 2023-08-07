@@ -9,8 +9,6 @@ export function Profile () {
   const { user } = location.state
   const [password, setPwd] = useState('')
   const navigate = useNavigate()
-  const DEV = 'http://localhost:9899'
-  const URL_PROD = process.env.URL_PROD
   const dispatch = useDispatch()
 
   const handlePwd = (e) => {

@@ -7,7 +7,6 @@ import { addDevice } from '../redux/devices/devicesSlice'
 export function NewDevice () {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const URL_PROD = process.env.URL_PROD
 
   const handleForm = async (e) => {
     e.preventDefault()
@@ -43,7 +42,7 @@ export function NewDevice () {
         </div>
         <div className='flex'>
           <Button type='submit' className='mt-8 w-36 h-8 rounded-full bg-green-400 ml-3'>Aceptar</Button>
-          <Link to='/'><button className='mt-8 w-36 h-8 rounded-full bg-red-400 ml-3'>Cancelar</button></Link>
+          <Link to='/devices'><button className='mt-8 w-36 h-8 rounded-full bg-red-400 ml-3'>Cancelar</button></Link>
         </div>
       </form>
     </div>

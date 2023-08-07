@@ -12,7 +12,6 @@ export function NewEntry () {
   const [stats, setStats] = useState('')
   const { displayDevices } = useSelector((state) => state.device)
   const { displayTeams } = useSelector((state) => state.team)
-  const URL_PROD = process.env.URL_PROD
   const { displayManagers } = useSelector((state) => state.manager)
 
   const handleForm = async (e) => {

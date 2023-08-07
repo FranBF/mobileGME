@@ -13,7 +13,6 @@ export function Home () {
   const { displayEntries } = useSelector((state) => state.entry)
   const { currentUser } = useSelector((state) => state.user)
   const navigate = useNavigate()
-  const URL_PROD = process.env.URL_PROD
   const handleEntries = async () => {
     await axios.get('https://api-mobilestock.onrender.com/api/entry', {
       withCredentials: true

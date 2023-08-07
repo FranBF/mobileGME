@@ -7,7 +7,6 @@ export function Entry () {
   const location = useLocation()
   const navigate = useNavigate()
   const [val, setVal] = useState('')
-  const URL_PROD = process.env.URL_PROD
 
   const { entry } = location.state
 

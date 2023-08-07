@@ -12,7 +12,6 @@ export function Login () {
   const [isLogin, setIsLogin] = useState(true)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const URL_PROD = process.env.URL_PROD
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
