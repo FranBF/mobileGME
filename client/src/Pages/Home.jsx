@@ -2,7 +2,7 @@ import { Table, TableHead, TableHeaderCell, TableBody, TableRow, TableCell, Butt
 import axios from 'axios'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { deleteEntry, fetchEntries } from '../redux/entries/entriesSlice'
 import { fetchDevices } from '../redux/devices/devicesSlice'
 import { fetchTeams } from '../redux/teams/teamsSlice.js'
@@ -11,15 +11,18 @@ import { fetchManagers } from '../redux/managers/managersSlice.js'
 export function Home () {
   const dispatch = useDispatch()
   const { displayEntries } = useSelector((state) => state.entry)
+  const { currentUser } = useSelector((state) => state.user)
+  const navigate = useNavigate()
+  const PROD = process.env.PROD
   const handleEntries = async () => {
-    await axios.get('https://api-mobilestock.onrender.com/api/entry', {
+    await axios.get(`${PROD}/api/entry`, {
       withCredentials: true
     }).then((r) => { dispatch(fetchEntries(r.data)) })
   }
 
   const handleDevices = async () => {
     try {
-      await axios.get('https://api-mobilestock.onrender.com/api/device', {
+      await axios.get(`${PROD}/api/device`, {
         withCredentials: true
       }).then((r) => { dispatch(fetchDevices(r.data)) })
     } catch (error) {
@@ -29,7 +32,7 @@ export function Home () {
 
   const handleManagers = async () => {
     try {
-      await axios.get('https://api-mobilestock.onrender.com/api/manager', {
+      await axios.get(`${PROD}/api/manager`, {
         withCredentials: true
       }).then((d) => { dispatch(fetchManagers(d.data)) })
     } catch (error) {
@@ -39,7 +42,7 @@ export function Home () {
 
   const handleTeams = async () => {
     try {
-      await axios.get('https://api-mobilestock.onrender.com/api/team', {
+      await axios.get(`${PROD}/api/team`, {
         withCredentials: true
       }).then((r) => dispatch(fetchTeams(r.data)))
     } catch (error) {
@@ -49,7 +52,7 @@ export function Home () {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://api-mobilestock.onrender.com/api/entry/${id}`, {
+      await axios.delete(`${PROD}/api/entry/${id}`, {
         headers: {
           Authorization: 'Bearer access_token'
         },
@@ -62,6 +65,9 @@ export function Home () {
   }
 
   useEffect(() => {
+    if (!currentUser) {
+      navigate('/login')
+    }
     handleEntries()
     handleDevices()
     handleTeams()

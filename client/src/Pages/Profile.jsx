@@ -9,7 +9,8 @@ export function Profile () {
   const { user } = location.state
   const [password, setPwd] = useState('')
   const navigate = useNavigate()
-  const PROD = 'http://localhost:9899'
+  const DEV = 'http://localhost:9899'
+  const PROD = process.env.PROD
   const dispatch = useDispatch()
 
   const handlePwd = (e) => {
@@ -23,7 +24,7 @@ export function Profile () {
     e.preventDefault()
     try {
       console.log('llego')
-      await axios.put(`https://api-mobilestock.onrender.com/api/user/${user._id}`, { password }, {
+      await axios.put(`${PROD}/api/user/${user._id}`, { password }, {
         headers: {
           Authorization: 'Bearer access_token'
         },

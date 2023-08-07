@@ -7,6 +7,7 @@ export function Entry () {
   const location = useLocation()
   const navigate = useNavigate()
   const [val, setVal] = useState('')
+  const PROD = process.env.PROD
 
   const { entry } = location.state
 
@@ -23,7 +24,7 @@ export function Entry () {
     const personManager = formData.get('manager')
     const team = formData.get('department')
     try {
-      await axios.put(`https://api-mobilestock.onrender.com/api/entry/${entry._id}`, { device, personGiven, deliverDate, status, personManager, team }, {
+      await axios.put(`${PROD}/api/entry/${entry._id}`, { device, personGiven, deliverDate, status, personManager, team }, {
         headers: {
           Authorization: 'Bearer access_token'
         },
