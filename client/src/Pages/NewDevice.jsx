@@ -1,9 +1,12 @@
 import { Button, TextInput } from '@tremor/react'
 import axios from 'axios'
+import { useDispatch } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
+import { addDevice } from '../redux/devices/devicesSlice'
 
 export function NewDevice () {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const URL_PROD = process.env.URL_PROD
 
   const handleForm = async (e) => {
@@ -19,7 +22,7 @@ export function NewDevice () {
           Authorization: 'Bearer access_token'
         },
         withCredentials: true
-      })
+      }).then((r) => dispatch(addDevice(r.data)))
       navigate('/devices')
     } catch (error) {
       console.log(error)
