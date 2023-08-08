@@ -1,4 +1,4 @@
-import { DelegationModel } from '../Models/DelegationModel.js'
+import DelegationModel from '../Models/DelegationModel.js'
 
 export const createDelegation = async (req, res, next) => {
   try {
