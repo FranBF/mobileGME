@@ -17,11 +17,6 @@ export const login = async (req, res, next) => {
   try {
     const user = await UserModel.findOne({ username: req.body.username })
     if (!user) return console.log('No existe el usuario')
-    if (user._doc.firstTime === 0) {
-      await UserModel.findByIdAndUpdate(user._doc._id, { $set: { firstTime: 1 } }, { new: true })
-    } else {
-      await UserModel.findByIdAndUpdate(user._doc._id, { $set: { firstTime: 2 } }, { new: true })
-    }
     const isCorrect = bcrypt.compareSync(req.body.password, user.password)
     if (!isCorrect) return console.log('Las credenciales no son correctas')
     const token = jwt.sign({ id: user._id }, process.env.JWT)
@@ -40,7 +35,7 @@ export const login = async (req, res, next) => {
 export const updateUser = async (req, res, next) => {
   try {
     const hash = bcrypt.hashSync(req.body.password, 10)
-    const user = await UserModel.findByIdAndUpdate(req.params.id, { $set: { password: hash } }, { new: true })
+    const user = await UserModel.findByIdAndUpdate(req.params.id, { $set: { password: hash, firstTime: 1 } }, { new: true })
     res.status(200).json(user)
   } catch (error) {
     console.log(error)

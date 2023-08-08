@@ -86,7 +86,7 @@ export function Home () {
   }
 
   useEffect(() => {
-    console.log(currentUser.firstTime)
+    console.log(currentUser)
     if (!currentUser) {
       navigate('/login')
     }
