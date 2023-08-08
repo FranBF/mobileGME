@@ -7,6 +7,7 @@ import { deleteEntry, fetchEntries } from '../redux/entries/entriesSlice'
 import { fetchDevices } from '../redux/devices/devicesSlice'
 import { fetchTeams } from '../redux/teams/teamsSlice.js'
 import { fetchManagers } from '../redux/managers/managersSlice.js'
+import { fetchDelegations } from '../redux/delegations/delegationSlice'
 import { Modal } from '../Components/Modal'
 import { Breadcrumb } from '../Components/Breadcrumb'
 
@@ -30,6 +31,16 @@ export function Home () {
       await axios.get('https://api-mobilestock.onrender.com/api/device', {
         withCredentials: true
       }).then((r) => { dispatch(fetchDevices(r.data)) })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleDelegations = async () => {
+    try {
+      await axios.get('https://api-mobilestock.onrender.com/api/delegation', {
+        withCredentials: true
+      }).then((r) => dispatch(fetchDelegations(r.data)))
     } catch (error) {
       console.log(error)
     }
@@ -82,6 +93,7 @@ export function Home () {
     handleDevices()
     handleTeams()
     handleManagers()
+    handleDelegations()
   }, [])
 
   return (
@@ -102,6 +114,7 @@ export function Home () {
             <TableHeaderCell>Estado</TableHeaderCell>
             <TableHeaderCell>Responsable</TableHeaderCell>
             <TableHeaderCell>Departamento</TableHeaderCell>
+            <TableHeaderCell>Delegación</TableHeaderCell>
             <TableHeaderCell>Acciones</TableHeaderCell>
           </TableRow>
         </TableHead>
@@ -131,6 +144,7 @@ export function Home () {
               </TableCell>
               <TableCell>{l.personManager}</TableCell>
               <TableCell>{l.team}</TableCell>
+              <TableCell>{l.delegation}</TableCell>
               <TableCell className='flex flex-row'>
                 <Link to={`/entry/${l._id}`} state={{ entry: l }}>
                   <svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' strokeWidth={1.5} stroke='currentColor' className='w-6 h-6'>

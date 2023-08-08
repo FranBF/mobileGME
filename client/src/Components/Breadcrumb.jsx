@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 export function Breadcrumb ({ path }) {
   const [pathName, setPathName] = useState('')
+  const location = useLocation()
   console.log(path.charAt(0))
   const handlePathName = () => {
-    if (path.charAt(0) === '/') {
+    if (location.pathname.toString() === '/') {
       setPathName('Home')
     }
     setPathName(path.charAt(1).toUpperCase() + path.slice(2))

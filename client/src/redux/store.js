@@ -15,6 +15,7 @@ import entryReducer from './entries/entriesSlice'
 import devicesSlice from './devices/devicesSlice'
 import teamsSlice from './teams/teamsSlice'
 import managersSlice from './managers/managersSlice'
+import delegationSlice from './delegations/delegationSlice'
 
 const persistConfig = {
   key: 'root',
@@ -27,7 +28,8 @@ const rootReducer = combineReducers({
   entry: entryReducer,
   device: devicesSlice,
   team: teamsSlice,
-  manager: managersSlice
+  manager: managersSlice,
+  delegation: delegationSlice
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
