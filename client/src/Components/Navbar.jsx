@@ -11,7 +11,7 @@ export function Navbar () {
     navigate('/login')
   }
   return (
-    <div className='w-full h-12 fixed top-0 border-b-[1px] border-gray-400 flex items-center justify-between'>
+    <div className='w-full h-12 fixed top-0 border-b-[1px] border-gray-400 flex items-center justify-between bg-white'>
       <Link to='/'><h1 className='ml-4 text-xl font-bold'>Mobile Stock</h1></Link>
       {currentUser
         ? (

@@ -6,7 +6,8 @@ import { logout } from '../redux/users/userSlice.js'
 
 export function Profile () {
   const location = useLocation()
-  const { user } = location.state
+  const user = location.state.currUser || location.state.user
+  console.log('location' + location)
   const [password, setPwd] = useState('')
   const navigate = useNavigate()
   const dispatch = useDispatch()
