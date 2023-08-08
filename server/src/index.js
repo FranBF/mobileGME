@@ -9,6 +9,7 @@ import managerRouter from './Routes/managerRouter.js'
 import deviceRouter from './Routes/deviceRouter.js'
 import entryRouter from './Routes/entryRouter.js'
 import teamRouter from './Routes/teamRouter.js'
+import delegationRouter from './Routes/delegationRouter.js'
 
 const app = express()
 app.use(cors({ credentials: true, origin: true }))
@@ -22,6 +23,7 @@ app.use('/api/manager', managerRouter)
 app.use('/api/device', deviceRouter)
 app.use('/api/entry', entryRouter)
 app.use('/api/team', teamRouter)
+app.use('/api/delegation', delegationRouter)
 
 app.listen(process.env.PORT, () => {
   console.log(`Server started at http://localhost:${process.env.PORT}`)

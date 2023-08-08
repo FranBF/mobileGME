@@ -3,9 +3,11 @@ import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteDevice } from '../redux/devices/devicesSlice'
 import { Link } from 'react-router-dom'
+import { Breadcrumb } from '../Components/Breadcrumb'
 
 export function Devices () {
   const { displayDevices } = useSelector((state) => state.device)
+  const pathName = window.location.pathname.toString()
   const dispatch = useDispatch()
 
   const handleDelete = async (id) => {
@@ -24,9 +26,13 @@ export function Devices () {
 
   return (
     <div className='mt-12 w-full flex justify-center flex-col items-center'>
-      <div className='w-11/12 flex mt-8 justify-end'>
-        <Link to='/new-device'><Button className=''>Añadir Dispositivo</Button></Link>
+      <div className='flex w-11/12 justify-between items-end'>
+        <Link to={pathName}><Breadcrumb path={pathName} /></Link>
+        <div className='w-11/12 flex mt-8 justify-end'>
+          <Link to='/new-device'><Button className=''>Añadir Dispositivo</Button></Link>
+        </div>
       </div>
+
       <Table className='w-11/12 border-[1px] border-gray-400 mt-4'>
         <TableHead>
           <TableRow>

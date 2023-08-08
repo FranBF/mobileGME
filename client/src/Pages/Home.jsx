@@ -8,14 +8,17 @@ import { fetchDevices } from '../redux/devices/devicesSlice'
 import { fetchTeams } from '../redux/teams/teamsSlice.js'
 import { fetchManagers } from '../redux/managers/managersSlice.js'
 import { Modal } from '../Components/Modal'
+import { Breadcrumb } from '../Components/Breadcrumb'
 
 export function Home () {
   const dispatch = useDispatch()
+  const pathName = window.location.pathname.toString()
   const { displayEntries } = useSelector((state) => state.entry)
   const [visible, setVisible] = useState(false)
   const [item, setItem] = useState([])
   const { currentUser } = useSelector((state) => state.user)
   const navigate = useNavigate()
+
   const handleEntries = async () => {
     await axios.get('https://api-mobilestock.onrender.com/api/entry', {
       withCredentials: true
@@ -84,8 +87,11 @@ export function Home () {
   return (
     <div className='mt-12 w-full flex justify-center flex-col items-center'>
       <Modal action={deleteEntry} name='borrar' item={[item]} visible={visible} setVisible={setVisible} func={handleDelete} />
-      <div className='w-11/12 flex justify-end'>
-        <Link to='/create-entry'><Button size='md' className='w-36 h-8 mt-8'>Crear nueva entrada</Button></Link>
+      <div className='flex w-11/12 justify-between items-end'>
+        <Link to={pathName}><Breadcrumb path={pathName} /></Link>
+        <div className='w-11/12 flex justify-end'>
+          <Link to='/create-entry'><Button size='md' className='w-36 h-8 mt-8'>Crear nueva entrada</Button></Link>
+        </div>
       </div>
       <Table className='w-11/12 border-[1px] border-gray-400 mt-4'>
         <TableHead>

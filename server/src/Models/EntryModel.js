@@ -31,6 +31,10 @@ const Entry = new mongoose.Schema({
   team: {
     type: String,
     required: true
+  },
+  delegation: {
+    type: String,
+    required: true
   }
 }, { timestamps: true })
 
