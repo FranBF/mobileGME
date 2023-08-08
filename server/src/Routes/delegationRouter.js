@@ -1,5 +1,5 @@
 import express from 'express'
-import { createDelegation, getAllDelegations } from '../Controllers/DelegationController'
+import { createDelegation, getAllDelegations } from '../Controllers/DelegationController.js'
 import { verifyToken } from '../verifyToken.js'
 
 const router = express.Router()
