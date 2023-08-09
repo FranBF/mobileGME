@@ -22,8 +22,9 @@ export function Entry () {
     const status = val
     const personManager = formData.get('manager')
     const team = formData.get('department')
+    const delegation = formData.get('delegation')
     try {
-      await axios.put(`https://api-mobilestock.onrender.com/api/entry/${entry._id}`, { device, personGiven, deliverDate, status, personManager, team }, {
+      await axios.put(`https://api-mobilestock.onrender.com/api/entry/${entry._id}`, { device, personGiven, deliverDate, status, personManager, team, delegation }, {
         headers: {
           Authorization: 'Bearer access_token'
         },
@@ -53,7 +54,7 @@ export function Entry () {
           </div>
           <div className='flex flex-col mt-3 ml-3'>
             <label>Estado:</label>
-            <Select onValueChange={setVal} className='z-99 bg-inherit'>
+            <Select onValueChange={setVal} defaultValue={entry.status} className='z-99 bg-inherit'>
               <SelectItem className='z-99 hover:cursor-pointer bg-slate-100 hover:bg-gray-200' value='Activo'>Activo</SelectItem>
               <SelectItem className='z-99 hover:cursor-pointer bg-slate-100 hover:bg-gray-200' value='No activo'>No activo</SelectItem>
             </Select>
@@ -65,6 +66,10 @@ export function Entry () {
           <div className='flex flex-col mt-3 ml-3'>
             <label>Departamento:</label>
             <TextInput className='bg-gray-200' name='department' value={entry.team} />
+          </div>
+          <div className='flex flex-col mt-3 ml-3'>
+            <label>Delegación:</label>
+            <TextInput className='bg-gray-200' name='delegation' value={entry.delegation} />
           </div>
         </div>
         <div className='flex'>

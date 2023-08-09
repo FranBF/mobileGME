@@ -88,8 +88,8 @@ export function Home () {
   }
 
   useEffect(() => {
-    if (currentUser.firstTime === 0) {
-      navigate('/my-profile', { state: { currUser: currentUser } })
+    if (currentUser) {
+      if (currentUser.firstTime === 0) { navigate('/my-profile', { state: { currUser: currentUser } }) }
     }
     if (!currentUser) {
       navigate('/login')
@@ -104,7 +104,7 @@ export function Home () {
   return (
     <div className='mt-12 w-full flex justify-center flex-col items-center'>
       <Searcher whereToLook={displayEntries} whatToLook='personGiven' setSearch={setSearch} />
-      <Modal action={deleteEntry} name='borrar' item={[item]} visible={visible} setVisible={setVisible} func={handleDelete} />
+      <Modal action={deleteEntry} name='borrar' item={[item]} visible={visible} setVisible={setVisible} func={handleDelete} fromWhere='home' />
       <div className='flex w-11/12 justify-between items-end'>
         <Link to={pathName}><Breadcrumb path={pathName} /></Link>
         <div className='w-11/12 flex justify-end'>
