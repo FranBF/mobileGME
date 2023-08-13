@@ -2,15 +2,20 @@ import { useState } from 'react'
 
 export function Searcher ({ whereToLook, whatToLook, setSearch }) {
   const [filter, setFilter] = useState('')
+  const path = window.location.pathname.replace('/', '')
 
   const handleSearch = (e) => {
-    console.log(filter)
     const val = e.target.value
     setSearch(whereToLook.filter((data) => {
       if (val === '') {
         return data
       }
-      return data.name.toLowerCase().includes(filter)
+      if (path === '') {
+        return data.personGiven.toLowerCase().includes(filter)
+      } else if (path === 'devices') {
+        return data.name.toLowerCase().includes(filter)
+      }
+      return data
     }))
   }
   return (
